@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-function ExpenseForm({ onAddExpense, categoryOptions }) {
+function ExpenseForm({ onAddExpense, categoryOptions, tripOptions = [] }) {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState(categoryOptions[0] || "Other");
   const [date, setDate] = useState("");
+  const [tripId, setTripId] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
@@ -23,11 +24,12 @@ function ExpenseForm({ onAddExpense, categoryOptions }) {
       return;
     }
 
-    onAddExpense(trimmedTitle, numericAmount, category, date);
+    onAddExpense(trimmedTitle, numericAmount, category, date, tripId);
     setTitle("");
     setAmount("");
     setCategory(categoryOptions[0] || "Other");
     setDate("");
+    setTripId("");
     setError("");
   };
 
@@ -77,6 +79,21 @@ function ExpenseForm({ onAddExpense, categoryOptions }) {
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
+      </div>
+      <div className="field">
+        <label htmlFor="expense-trip">Trip</label>
+        <select
+          id="expense-trip"
+          value={tripId}
+          onChange={(e) => setTripId(e.target.value)}
+        >
+          <option value="">No Trip</option>
+          {tripOptions.map((trip) => (
+            <option key={trip.id} value={trip.id}>
+              {trip.name}
+            </option>
+          ))}
+        </select>
       </div>
       <button type="submit">Add Expense</button>
       {error ? <p className="form-error">{error}</p> : null}

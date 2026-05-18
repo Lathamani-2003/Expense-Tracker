@@ -12,7 +12,7 @@ function ExpenseList({ expenses, onDeleteExpense }) {
             <p className="expense-meta">
               {expense.category || "Other"} {expense.date ? `- ${expense.date}` : ""}
             </p>
-            <p className="expense-amount">${expense.amount.toFixed(2)}</p>
+            <p className="expense-amount">₹{expense.amount.toFixed(2)}</p>
           </div>
           <button
             className="delete-btn"
