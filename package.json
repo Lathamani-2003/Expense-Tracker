@@ -1,7 +1,7 @@
 {
   "name": "expense-tracker",
   "version": "1.0.0",
-  "homepage": "https://github.com/Lathamani-2003/Expense-Tracker",
+  "homepage": "https://Lathamani-2003.github.io/Expense-Tracker",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
